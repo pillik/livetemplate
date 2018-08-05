@@ -1,4 +1,3 @@
-
 <div class="logincontainer{if $linkableProviders} with-social{/if}">
 
     {include file="$template/includes/pageheader.tpl" title=$LANG.login desc="{$LANG.restrictedpage}"}
@@ -12,7 +11,6 @@
     {/if}
 
     <div class="providerLinkingFeedback"></div>
-
 
     <div class="row">
         <div class="col-sm-{if $linkableProviders}7{else}12{/if}">
@@ -47,7 +45,6 @@
 	<div class="col-sm-5{if !$oneall_social_login_embedded} hidden{/if}">
 	{$oneall_social_login_embedded}
         </div>
-
     </div>
 	<div class="row">
 		<div class="header-lined">
@@ -66,5 +63,4 @@
 		</div>
 	</div>
 	<hr />
-
 </div>

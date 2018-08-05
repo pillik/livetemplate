@@ -55,6 +55,7 @@
                         <div class="small-text">
                             <!-- remove this {$LANG.invoicesdatedue}: {$datedue} -->
                            <!-- Add this --><strong>Payment due on presentation</strong>
+                            {$LANG.invoicesdatedue}: {$datedue}
                         </div>
                         <div class="payment-btn-container hidden-print" align="center">
                             {$paymentbutton}
@@ -74,7 +75,6 @@ Account No: <br/>
 
 <p class="text-danger">(Please use FNB ATM when making cash deposits as bank charges are R30 on small deposits)</p></strong>
 </small></div> 
-           
            
            
             <hr>
@@ -126,8 +126,6 @@ Account No: <br/>
                             </form>
 
                                 <div class="col-sm-6" align="right"><strong>Pay with Snapscan</strong><a href="https://pos.snapscan.io/qr/l7BUVKJB?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&strict=true" target="_blank"><img src="https://pos.snapscan.io/qr/l7BUVKJB.svg?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&snap_code_size=125&strict=true"></a></div>
-                            
-                            
                             
                         {else}
                             {$paymentmethod}
@@ -264,8 +262,8 @@ Account No: <br/>
             </div>
 
             <div class="pull-right btn-group btn-group-sm hidden-print">
-                <a href="javascript:window.print()" class="btn btn-default"><i class="fa fa-print"></i> {$LANG.print}</a>
-                <a href="dl.php?type=i&amp;id={$invoiceid}" class="btn btn-default"><i class="fa fa-download"></i> {$LANG.invoicesdownload}</a>
+                <a href="javascript:window.print()" class="btn btn-default"><i class="fas fa-print"></i> {$LANG.print}</a>
+                <a href="dl.php?type=i&amp;id={$invoiceid}" class="btn btn-default"><i class="fas fa-download"></i> {$LANG.invoicesdownload}</a>
             </div>
 
         {/if}

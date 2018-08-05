@@ -1,12 +1,9 @@
 <!-- Styling -->
-<script defer src="https://use.fontawesome.com/releases/v4.7.0/js/all.js"></script>
- <script defer src="https://use.fontawesome.com/releases/v4.7.0/js/v4-shims.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v3.2.1/js/all.js"></script>
- <script defer src="https://use.fontawesome.com/releases/v3.2.1/js/v4-shims.js"></script>
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600|Raleway:400,700" rel="stylesheet">
 <link href="{$WEB_ROOT}/templates/{$template}/css/all.min.css?v={$versionHash}" rel="stylesheet">
 <link href="{$WEB_ROOT}/templates/{$template}/css/custom.css" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -20,7 +17,8 @@
         locale = '{if !empty($mdeLocale)}{$mdeLocale}{else}en{/if}',
         saved = '{lang key="markdown.saved"}',
         saving = '{lang key="markdown.saving"}',
-        whmcsBaseUrl = "{\WHMCS\Utility\Environment\WebHelper::getBaseUrl()}";
+        whmcsBaseUrl = "{\WHMCS\Utility\Environment\WebHelper::getBaseUrl()}",
+        recaptchaSiteKey = "{$recaptchaSiteKey}";
 </script>
 <script src="{$WEB_ROOT}/templates/{$template}/js/scripts.min.js?v={$versionHash}"></script>
 

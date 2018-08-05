@@ -1,7 +1,7 @@
 
                 </div><!-- /.main-content -->
                 {if !$inShoppingCart && $secondarySidebar->hasChildren()}
-                    <div class="col-md-3 pull-md-left sidebar">
+                    <div class="col-md-3 pull-md-left sidebar sidebar-secondary">
                         {include file="$template/includes/sidebar.tpl" sidebar=$secondarySidebar}
                     </div>
                 {/if}
@@ -12,8 +12,8 @@
 
 <section id="footer">
     <div class="container">
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
         <p>Copyright &copy; {$date_year} {$companyname}. All Rights Reserved.</p><a href="/index.php?m=TermsOfService">Terms Of Service</a> | <a href="/index.php?m=PrivacyPolicy">Privacy Policy</a> | <a href="/paia.php">PAIA</a> | <a href="/aup.php">Acceptable Use Policy</a>
+        <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
     </div>
 </section>
 
@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer panel-footer">
                 <div class="pull-left loader">
-                    <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+                    <i class="fas fa-circle-notch fa-spin"></i> Loading...
                 </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                     Close

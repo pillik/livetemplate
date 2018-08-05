@@ -27,7 +27,7 @@
         {if $promotion->hasFeatures()}
             <ul>
                 {foreach $promotion->getFeatures() as $feature}
-                    <li><i class="fa fa-check-circle"></i> {$feature}</li>
+                    <li><i class="fa fa-check-circle-o"></i> {$feature}</li>
                 {/foreach}
             </ul>
         {/if}
