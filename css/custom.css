@@ -1,0 +1,189 @@
+/* *****************************************************
+
+    ** Custom Stylesheet **
+
+    Any custom styling you want to apply should be
+    defined here.
+
+***************************************************** */
+#redtext {
+    font-color: red;
+}
+.fa-nav {
+	color: rgb(14, 80, 119)
+}
+.fa-red {
+    color: red;
+}
+.fa-yellow {
+    color: yellow;
+}
+.fa-orange {
+    color: orange;
+}
+.fa-white {
+    color: white;
+}
+.fa-black {
+    color: black;
+}
+.fa-orange-alt3 {
+    color: #f25a19;
+}
+.fa-orange-alt {
+    color: #f98304;
+}
+.fa-orange-alt1 {
+    color: #ef7900;
+}
+.fa-orange-alt2 {
+    color: #d46709;
+}
+#custom-h1-lrg {
+    color: white;
+    font-size: 110%; 
+}
+#custom-h1-sml {
+    color: white;
+    font-size: 80%; 
+}
+
+/* *****************************************************
+
+    ** Custom Stylesheet **
+
+    These are for the blue shopping cart blocks on the landing pages.
+
+***************************************************** */
+
+ .akbigger {
+     font-size: 18px;
+    font-weight: 200;
+    line-height: 25px;
+}
+ .akpanel {
+      border: 1px solid #0e5077; 
+      border-radius:0 !important;
+      transition: box-shadow 0.5s;
+	 margin-bottom: 20px;
+  }
+  .akpanel:hover {
+      box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+.akpanel-body {
+    padding: 10px 15px;
+}
+  .akpanel-footer .btn:hover {
+      border: 1px solid #0e5077;
+      background-color: #fff !important;
+      color: #0e5077;
+  }
+  .akpanel-heading {
+      color: #fff !important;
+      background-color: #0e5077 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+  }
+  .akpanel-footer {
+      background-color: white !important;
+	  border-top: 1px solid #ddd;
+  }
+  .akpanel-footer h3 {
+      font-size: 32px;
+  }
+  .akpanel-footer h4 {
+      color: #aaa;
+      font-size: 14px;
+  }
+  .akpanel-footer .btn {
+      margin: 15px 0;
+      background-color: #0e5077;
+      color: #fff;
+  }
+
+/* *****************************************************
+
+    ** Custom Stylesheet **
+
+    These are for the dropsuite page.
+
+***************************************************** */
+
+
+.colorstrip{
+    width: 100%; height: 40px;
+    border-style: solid;
+    border-color: limegreen;
+    background-color: limegreen;
+}
+.btna {
+	background-color: limegreen;
+}
+	
+.btna:hover {
+    background-color: black;
+	text-decoration: none;
+}
+
+/* *****************************************************
+
+    ** Custom Stylesheet **
+
+    These are for the hosted exchange page.
+
+***************************************************** */
+
+.wella {
+    background: rgb(22, 105, 173);
+	}
+.textwhitea {
+	color: #FFF;
+}
+
+/* *****************************************************
+
+    ** Custom Stylesheet **
+
+    These are for the design page.
+
+***************************************************** */
+.akcontainers {
+ 	font-size: 55px;
+	font-weight: 700;
+    letter-spacing: -1px;
+    font-family: Gill Sans, Gill Sans MT, Myriad Pro, DejaVu Sans Condensed, Helvetica, Arial," sans-serif";
+}
+
+.aksmaller {
+	font-size: 30px;
+	font-weight: 300;
+}	
+	
+.aksmallest {
+	font-size: 20px;
+	font-weight: 300;
+	letter-spacing: +1px;
+}
+	
+	
+.akcontent {
+
+
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 34px;
+		
+}
+	
+.aksmallest1 {
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: +1px;
+}	
+
+
+
