@@ -30,7 +30,7 @@
                 <th>{$LANG.invoicestitle}</th>
                 <th>{$LANG.invoicesdatecreated}</th>
                 <th>{$LANG.invoicesdatedue}</th>
-		<th>{$LANG.invoicedatepaid}</th>
+                <th>{$LANG.invoicedatepaid}</th>
                 <th>{$LANG.invoicestotal}</th>
                 <th>{$LANG.invoicesstatus}</th>
                 <th class="responsive-edit-button" style="display: none;"></th>
@@ -42,15 +42,15 @@
                     <td>{$invoice.invoicenum}</td>
                     <td><span class="hidden">{$invoice.normalisedDateCreated}</span>{$invoice.datecreated}</td>
                     <td><span class="hidden">{$invoice.normalisedDateDue}</span>{$invoice.datedue}</td>
-			
-			{if $invoice.statusClass == "paid"}
-				<td>{$datepaidarray.{$invoice.invoicenum}|date_format:"%A, %B %e, %Y"}</td>
-			{elseif $invoice.statusClass == "unpaid"}
-				<td><span class="label status status-{$invoice.statusClass}">{$LANG.invoicesdue}</span></td>
-			{else}
-				<td><center><span class="label status status-{$invoice.statusClass}">{$invoice.status}</span></center></td>
-			{/if}
-
+                    <!-- Code to add the Paid date Field in invoices page -->
+                    {if $invoice.statusClass == "paid"}
+        				<td>{$datepaidarray.{$invoice.invoicenum}|date_format:"%A, %B %e, %Y"}</td>
+        			{elseif $invoice.statusClass == "unpaid"}
+        				<td><span class="label status status-{$invoice.statusClass}">{$LANG.invoicesdue}</span></td>
+        			{else}
+        				<td><center><span class="label status status-{$invoice.statusClass}">{$invoice.status}</span></center></td>
+        			{/if}
+                    <!-- End of Code for Paid Date Field -->
                     <td data-order="{$invoice.totalnum}">{$invoice.total}</td>
                     <td><span class="label status status-{$invoice.statusClass}">{$invoice.status}</span></td>
                     <td class="responsive-edit-button" style="display: none;">
