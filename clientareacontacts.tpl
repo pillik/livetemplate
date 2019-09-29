@@ -61,6 +61,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="inputTaxId" class="control-label">{lang key=$taxIdLabel}</label>
+                    <input type="text" name="tax_id" id="inputTaxId" class="form-control" value="{$contactTaxId}" />
+                </div>
+
+                <div class="form-group">
                     <label class="control-label" for="inputSubaccountActivate">{$LANG.subaccountactivate}</label>
                     <div class="controls checkbox">
                         <label>
@@ -132,16 +137,21 @@
 
             <fieldset class="form-horizontal">
                 <div id="newPassword1" class="form-group has-feedback">
-                    <label for="inputNewPassword1" class="col-sm-5 control-label">{$LANG.newpassword}</label>
-                    <div class="col-sm-6">
+                    <label for="inputNewPassword1" class="col-sm-4 control-label">{$LANG.newpassword}</label>
+                    <div class="col-sm-5">
                         <input type="password" class="form-control" id="inputNewPassword1" name="password" autocomplete="off" />
                         <span class="form-control-feedback glyphicon"></span>
                         {include file="$template/includes/pwstrength.tpl" noDisable=true}
                     </div>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-default generate-password" data-targetfields="inputNewPassword1,inputNewPassword2">
+                            {$LANG.generatePassword.btnLabel}
+                        </button>
+                    </div>
                 </div>
                 <div id="newPassword2" class="form-group has-feedback">
-                    <label for="inputNewPassword2" class="col-sm-5 control-label">{$LANG.confirmnewpassword}</label>
-                    <div class="col-sm-6">
+                    <label for="inputNewPassword2" class="col-sm-4 control-label">{$LANG.confirmnewpassword}</label>
+                    <div class="col-sm-5">
                         <input type="password" class="form-control" id="inputNewPassword2" name="password2" autocomplete="off" />
                         <span class="form-control-feedback glyphicon"></span>
                         <div id="inputNewPassword2Msg">
@@ -184,7 +194,7 @@
         <div class="form-group text-center">
             <input class="btn btn-primary" type="submit" name="save" value="{$LANG.clientareasavechanges}" />
             <input class="btn btn-default" type="reset" value="{$LANG.cancel}" />
-            <a class="btn btn-danger" data-toggle="confirmation" data-btn-ok-label="{lang key='yes'}" data-btn-ok-icon="fa fa-check" data-btn-ok-class="btn-success" data-btn-cancel-label="{lang key='no'}" data-btn-cancel-icon="fa fa-ban" data-btn-cancel-class="btn-default" data-title="{lang key='clientareadeletecontact'}" data-content="{lang key='clientareadeletecontactareyousure'}" data-popout="true" href="clientarea.php?action=contacts&delete=true&id={$contactid}&token={$token}">{lang key='clientareadeletecontact'}</a>
+            <a class="btn btn-danger" data-toggle="confirmation" data-btn-ok-label="{lang key='yes'}" data-btn-ok-icon="fas fa-check" data-btn-ok-class="btn-success" data-btn-cancel-label="{lang key='no'}" data-btn-cancel-icon="fas fa-ban" data-btn-cancel-class="btn-default" data-title="{lang key='clientareadeletecontact'}" data-content="{lang key='clientareadeletecontactareyousure'}" data-popout="true" href="clientarea.php?action=contacts&delete=true&id={$contactid}&token={$token}">{lang key='clientareadeletecontact'}</a>
         </div>
 
     </form>

@@ -16,19 +16,25 @@
         {if $item->hasChildren()}
             <div class="list-group{if $item->getChildrenAttribute('class')} {$item->getChildrenAttribute('class')}{/if}">
                 {foreach $item->getChildren() as $childItem}
-                    {if $childItem->getUri()}
-                        <a menuItemName="{$childItem->getName()}" href="{$childItem->getUri()}" class="list-group-item{if $childItem->isDisabled()} disabled{/if}{if $childItem->getClass()} {$childItem->getClass()}{/if}{if $childItem->isCurrent()} active{/if}"{if $childItem->getAttribute('dataToggleTab')} data-toggle="tab"{/if}{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if} id="{$childItem->getId()}">
-                            {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
-                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                            {$childItem->getLabel()}
-                        </a>
-                    {else}
-                        <div menuItemName="{$childItem->getName()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
-                            {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
-                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                            {$childItem->getLabel()}
-                        </div>
-                    {/if}
+					{if $groupname eq "E-Mail Only Hosting" && $childItem->getName() eq "FTP Accounts"}
+					{elseif $groupname eq "E-Mail Only Hosting" && $childItem->getName() eq "Alias Domains"}
+					{elseif $groupname eq "E-Mail Only Hosting" && $childItem->getName() eq "Databases"}
+					{elseif $groupname eq "E-Mail Only Hosting" && $childItem->getName() eq "Sub Domains"}
+					{else}
+						{if $childItem->getUri()}
+							<a menuItemName="{$childItem->getName()}" href="{$childItem->getUri()}" class="list-group-item{if $childItem->isDisabled()} disabled{/if}{if $childItem->getClass()} {$childItem->getClass()}{/if}{if $childItem->isCurrent()} active{/if}"{if $childItem->getAttribute('dataToggleTab')} data-toggle="tab"{/if}{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if} id="{$childItem->getId()}">
+								{if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
+								{if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
+								{$childItem->getLabel()}
+							</a>
+						{else}
+							<div menuItemName="{$childItem->getName()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
+								{if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
+								{if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
+								{$childItem->getLabel()}
+							</div>
+						{/if}
+					{/if}
                 {/foreach}
             </div>
         {/if}

@@ -1,49 +1,5 @@
 <?php
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- * Resellers Center Integration
- */
-use MGModule\ResellersCenter\repository\whmcs\Invoices;
-use MGModule\ResellersCenter\core\helpers\ClientAreaHelper;
- 
-if(!$rcinvoice)
-{
-    //load Resellers Center
-    require ROOTDIR.'/modules/addons/ResellersCenter/Loader.php';
-    new MGModule\ResellersCenter\Loader();
-    MGModule\ResellersCenter\Addon::I();
-
-    global $whmcs;
-
-    $repo = new Invoices();
-    $invoice = $repo->find($invoiceid);
-    
-    if($invoice->reseller)
-    {
-        //Set Invoice num (pagetitle)
-        $invoice->invoicenum = !empty($invoice->branded->invoicenum) ? $invoice->branded->invoicenum : $invoice->id;
-
-        $pagetitle = $whmcs->get_lang(invoicenumber) . $invoice->invoicenum;
-
-        //Set reseller logo
-        $reseller = $invoice->client->resellerClient->reseller;
-        if($reseller->settings["admin"]["branding"]) 
-        {
-            //to make less changes in whole file we will use relative path
-            $path = ClientAreaHelper::getLogoPath();
-            $customLogo = "../../" . $path . $reseller->settings["private"]["logo"];
-        }
-
-        //Set company address
-        if($reseller->settings["admin"]["invoiceBranding"]) 
-        {
-            $companyaddress = explode("\n",$reseller->settings["private"]["payto"]);
-        }
-    }
-}
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 # Logo
 $logoFilename = 'placeholder.png';
 if (file_exists(ROOTDIR . '/assets/img/logo.png')) {
@@ -94,6 +50,9 @@ foreach ($companyaddress as $addressLine) {
     $pdf->Cell(180, 4, trim($addressLine), 0, 1, 'R');
     $pdf->SetFont($pdfFont, '', 9);
 }
+if ($taxCode) {
+    $pdf->Cell(180, 4, $taxIdLabel . ': ' . trim($taxCode), 0, 1, 'R');
+}
 $pdf->Ln(5);
 
 # Header Bar
@@ -110,9 +69,9 @@ $pdf->SetFillColor(239);
 $pdf->Cell(0, 8, $pagetitle, 0, 1, 'L', '1');
 $pdf->SetFont($pdfFont, '', 10);
 $pdf->Cell(0, 6, Lang::trans('invoicesdatecreated') . ': ' . $datecreated, 0, 1, 'L', '1');
-/** 
+/** remove this line
 $pdf->Cell(0, 6, Lang::trans('invoicesdatedue') . ': ' . $duedate, 0, 1, 'L', '1');
-*/
+**/
 $pdf->Ln(10);
 
 $startpage = $pdf->GetPage();
@@ -134,6 +93,9 @@ if ($clientsdetails["address2"]) {
 }
 $pdf->Cell(0, 4, $clientsdetails["city"] . ", " . $clientsdetails["state"] . ", " . $clientsdetails["postcode"], 0, 1, 'L');
 $pdf->Cell(0, 4, $clientsdetails["country"], 0, 1, 'L');
+if (array_key_exists('tax_id', $clientsdetails) && $clientsdetails['tax_id']) {
+    $pdf->Cell(0, 4, $taxIdLabel . ': ' . $clientsdetails['tax_id'], 0, 1, 'L');
+}
 if ($customfields) {
     $pdf->Ln();
     foreach ($customfields as $customfield) {

@@ -1,4 +1,4 @@
-<!-- <ol class="breadcrumb">
+<!-- blank out this breadcrumb <ol class="breadcrumb">
     {foreach $breadcrumb as $item}
         <li{if $item@last} class="active"{/if}>
             {if !$item@last}<a href="{$item.link}">{/if}
@@ -6,7 +6,7 @@
             {if !$item@last}</a>{/if}
         </li>
     {/foreach}
-</ol> -->
+</ol>-->
 
 <ol class="breadcrumb">
     {foreach $breadcrumb as $item}
@@ -17,3 +17,4 @@
         </li>
     {/foreach}
 </ol>
+

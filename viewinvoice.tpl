@@ -7,6 +7,7 @@
     <title>{$companyname} - {$pagetitle}</title>
 
     <link href="{$WEB_ROOT}/templates/{$template}/css/all.min.css" rel="stylesheet">
+    <link href="{$WEB_ROOT}/assets/css/fontawesome-all.min.css" rel="stylesheet">
     <link href="{$WEB_ROOT}/templates/{$template}/css/invoice.css" rel="stylesheet">
 
 </head>
@@ -53,9 +54,8 @@
 
                     {if $status eq "Unpaid" || $status eq "Draft"}
                         <div class="small-text">
-                            <!-- remove this {$LANG.invoicesdatedue}: {$datedue} -->
-                           <!-- Add this --><strong>Payment due on presentation</strong>
-                            {$LANG.invoicesdatedue}: {$datedue}
+<!-- remove this {$LANG.invoicesdatedue}: {$datedue} -->
+                            <!-- Add this --><strong>Payment due on presentation</strong>
                         </div>
                         <div class="payment-btn-container hidden-print" align="center">
                             {$paymentbutton}
@@ -64,8 +64,7 @@
 
                 </div>
             </div>
-
-                      <!-- Insert for payment reference -->
+<!-- Insert for payment reference -->
 Account No: <br/>
 
 <div class="small-text">
@@ -74,9 +73,8 @@ Account No: <br/>
 (If you are paying one from multiple invoices please use the reference CID{$userid} as well as the {$pagetitle})
 
 <p class="text-danger">(Please use FNB ATM when making cash deposits as bank charges are R30 on small deposits)</p></strong>
-</small></div> 
-           
-           
+</small></div>
+        
             <hr>
 
             {if $paymentSuccessAwaitingNotification}
@@ -96,6 +94,7 @@ Account No: <br/>
                     <strong>{$LANG.invoicespayto}</strong>
                     <address class="small-text">
                         {$payto}
+                        {if $taxCode}<br />{$taxIdLabel}: {$taxCode}{/if}
                     </address>
                 </div>
                 <div class="invoice-col">
@@ -106,6 +105,9 @@ Account No: <br/>
                         {$clientsdetails.address1}, {$clientsdetails.address2}<br />
                         {$clientsdetails.city}, {$clientsdetails.state}, {$clientsdetails.postcode}<br />
                         {$clientsdetails.country}
+                        {if $clientsdetails.tax_id}
+                            <br />{$taxIdLabel}: {$clientsdetails.tax_id}
+                        {/if}
                         {if $customfields}
                         <br /><br />
                         {foreach from=$customfields item=customfield}
@@ -124,11 +126,12 @@ Account No: <br/>
                             <form method="post" action="{$smarty.server.PHP_SELF}?id={$invoiceid}" class="form-inline">
                                 {$gatewaydropdown}
                             </form>
-
-                                <div class="col-sm-6" align="right"><strong>Pay with Snapscan</strong><a href="https://pos.snapscan.io/qr/l7BUVKJB?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&strict=true" target="_blank"><img src="https://pos.snapscan.io/qr/l7BUVKJB.svg?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&snap_code_size=125&strict=true"></a></div>
-                            
+<!-- begin snapscan --> 
+    <div class="col-sm-6" align="right"><strong>Pay with Snapscan</strong><a href="https://pos.snapscan.io/qr/l7BUVKJB?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&strict=true" target="_blank"><img src="https://pos.snapscan.io/qr/l7BUVKJB.svg?id={$invoiceid}&amount={$total|replace:'R':''|replace:'.':''}&customvalue={$userid}&snap_code_size=125&strict=true"></a></div>
+<!-- end snapscan -->                        
+                        
                         {else}
-                            {$paymentmethod}
+                            {$paymentmethod}{if $paymethoddisplayname} ({$paymethoddisplayname}){/if}
                         {/if}
                     </span>
                     <br /><br />
@@ -137,9 +140,11 @@ Account No: <br/>
                     <strong>{$LANG.invoicesdatecreated}</strong><br>
                     <span class="small-text">
                         {$date}<br><br>
-			{if $status eq "Unpaid"}
+ <!-- begin snapscan -->
+            {if $status eq "Unpaid"}
 			    <div class="col-sm-6"><a href="http://www.getsnapscan.com/user.html" target="_blank"><img src="/images/snapscan-logo.svg" class="img-responsive"></a><br /></div>
 			{/if}
+<!-- end snapscan -->                        
                     </span>
                 </div>
             </div>
@@ -198,13 +203,13 @@ Account No: <br/>
                                     <td class="total-row text-right"><strong>{$LANG.invoicessubtotal}</strong></td>
                                     <td class="total-row text-center">{$subtotal}</td>
                                 </tr>
-                                {if $taxrate}
+                                {if $taxname}
                                     <tr>
                                         <td class="total-row text-right"><strong>{$taxrate}% {$taxname}</strong></td>
                                         <td class="total-row text-center">{$tax}</td>
                                     </tr>
                                 {/if}
-                                {if $taxrate2}
+                                {if $taxname2}
                                     <tr>
                                         <td class="total-row text-right"><strong>{$taxrate2}% {$taxname2}</strong></td>
                                         <td class="total-row text-center">{$tax2}</td>

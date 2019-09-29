@@ -12,61 +12,43 @@
 
 <section id="footer">
     <div class="container">
-        <p>Copyright &copy; {$date_year} {$companyname}. All Rights Reserved.</p><a href="/index.php?m=TermsOfService">Terms Of Service</a> | <a href="/index.php?m=PrivacyPolicy">Privacy Policy</a> | <a href="/paia.php">PAIA</a> | <a href="/aup.php">Acceptable Use Policy</a>
         <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+        <p>{lang key="copyrightFooterNotice" year=$date_year company=$companyname} | <a href="/terms-of-service.php">Terms Of Service</a> | <a href="/privacy-policy.php">Privacy Policy</a> | <a href="/paia.php">PAIA</a> | <a href="/aup.php">Acceptable Use Policy</a></p>
     </div>
 </section>
 
 <div class="modal system-modal fade" id="modalAjax" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content panel panel-primary">
+        <div class="modal-content panel-primary">
             <div class="modal-header panel-heading">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
+                    <span class="sr-only">{$LANG.close}</span>
                 </button>
-                <h4 class="modal-title">Title</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body panel-body">
-                Loading...
+                {$LANG.loading}
             </div>
             <div class="modal-footer panel-footer">
                 <div class="pull-left loader">
-                    <i class="fas fa-circle-notch fa-spin"></i> Loading...
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    {$LANG.loading}
                 </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close
+                    {$LANG.close}
                 </button>
                 <button type="button" class="btn btn-primary modal-submit">
-                    Submit
+                    {$LANG.submit}
                 </button>
             </div>
         </div>
     </div>
 </div>
 
+{include file="$template/includes/generate-password.tpl"}
+
 {$footeroutput}
-
-<!-- Start of StatCounter Code for Default Guide -->
-<script type="text/javascript">
-var sc_project=11609031; 
-var sc_invisible=1; 
-var sc_security="1e6f57a3"; 
-var sc_https=1; 
-var scJsHost = (("https:" == document.location.protocol) ?
-"https://secure." : "http://www.");
-</script>
-<script type="text/javascript"
-src="http://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="http://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="//c.statcounter.com/11609031/0/1e6f57a3/1/" alt="Web
-Analytics"></a></div></noscript>
-<!-- End of StatCounter Code for Default Guide -->
-
-<br /><br />
 
 </body>
 </html>

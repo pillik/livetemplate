@@ -32,8 +32,8 @@
 
         <div id="containerNewUserSignup">
 
-            <!-- {include file="$template/includes/linkedaccounts.tpl" linkContext="registration"} -->
-		<div id="SocialNetworking">{$oneall_social_login_embedded}</div>
+            {include file="$template/includes/linkedaccounts.tpl" linkContext="registration"}
+
             <div class="sub-heading">
                 <span>{$LANG.orderForm.personalInformation}</span>
             </div>
@@ -142,6 +142,16 @@
                         </select>
                     </div>
                 </div>
+                {if $showTaxIdField}
+                    <div class="col-sm-12">
+                        <div class="form-group prepend-icon">
+                            <label for="inputTaxId" class="field-icon">
+                                <i class="fas fa-building"></i>
+                            </label>
+                            <input type="text" name="tax_id" id="inputTaxId" class="field" placeholder="{lang key=\WHMCS\Billing\Tax\Vat::getLabel()} ({$LANG.orderForm.optional})" value="{$clientsdetails.tax_id}">
+                        </div>
+                    </div>
+                {/if}
             </div>
             {if $customfields || $currencies}
             <div class="sub-heading">
@@ -181,8 +191,8 @@
                 </div>
                 {/if}
             </div>
+            {/if}
         </div>
-        {/if}
         <div id="containerNewUserSecurity" {if $remote_auth_prelinked && !$securityquestions } class="hidden"{/if}>
 
             <div class="sub-heading">
@@ -207,13 +217,18 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="passwordStrengthMeterBar">
-                        </div>
-                    </div>
+                    <button type="button" class="btn btn-default btn-sm generate-password" data-targetfields="inputNewPassword1,inputNewPassword2">
+                        {$LANG.generatePassword.btnLabel}
+                    </button>
                 </div>
                 <div class="col-sm-6">
-                    <p class="text-center small text-muted" id="passwordStrengthTextLabel">{$LANG.pwstrength}: {$LANG.pwstrengthenter}</p>
+                    <div class="password-strength-meter">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="passwordStrengthMeterBar">
+                            </div>
+                        </div>
+                        <p class="text-center small text-muted" id="passwordStrengthTextLabel">{$LANG.pwstrength}: {$LANG.pwstrengthenter}</p>
+                    </div>
                 </div>
             </div>
             {if $securityquestions}
@@ -271,7 +286,7 @@
             </div>
         {/if}
         <p align="center">
-            <input class="btn btn-large btn-primary" type="submit" value="{$LANG.clientregistertitle}"/>
+            <input class="btn btn-large btn-primary{$captcha->getButtonClass($captchaForm)}" type="submit" value="{$LANG.clientregistertitle}"/>
         </p>
     </form>
 </div>
